@@ -1,0 +1,118 @@
+ {% extends 'base.html'%}
+    {% block content%}
+
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+
+<div style="background: url('/media/img/images/bus.jpg');background-repeat:no-repeat;background-size: cover;color: white;">
+<br>
+<br>
+<br>
+<div class="container" style="background-color: white;width: 30%;" >
+<form class="form-horizontal" action='/ConfirmPayment/'  method="POST" id="form1">
+  {% csrf_token %}
+  <center>
+  <div>
+    <h2 style="color: black">Payment</h2>
+    <hr>
+  </div>
+  </center> 
+
+{% for or in UsersBookings %} 
+
+<center>
+  <div class="col-md-12">
+    <div class="col-md-12 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip01">Credit-Card Number</label>
+      <input type="text" class="form-control" name="creditcard" id="creditcard" placeholder="creditcard" value="" required>
+      <br>
+    </div>
+    <div class="col-md-12 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip02">Cvv</label>
+      <input type="text" class="form-control" name="cvv" id="cvv"  placeholder="cvv" value="" required>
+      <br>
+    </div>
+
+    <div class="col-md-12 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip01">Expiry date</label>
+      <input type="text" class="form-control" name="expiry" id="expiry" placeholder="expiry" value="" required>   
+      <br>   
+    </div>
+
+    <div class="col-md-12 "style="margin-bottom: 10px">
+      <label style="color: black" for="validationTooltipUsername"> Total Amount</label>
+      <div class="input-group">
+        <input type="text" class="form-control" readonly="" name="Username" id="Username" placeholder="Username" value="{{ or.total }}" required>
+        <br>
+      </div>
+    </div>
+{% endfor %} 
+
+ <div class="col-md-12 "style="margin-bottom: 10px">
+  <br>
+      <input type="button" onclick="check();" name="ButtonApply" value="Search &#8250;&#8250;"  id="ButtonApply" class="btn btn-round btn-primary" />
+    </div>
+
+    </div>
+</center>
+
+  </center>
+  <br>
+</form>
+ <br>
+</div>
+<br>
+<br>
+
+
+</div>
+<br> 
+<script type="text/javascript">
+function check() {
+
+
+
+
+
+      if(document.getElementById('creditcard').value != '')
+      {
+          if(document.getElementById('cvv').value != '')
+          {
+              if(document.getElementById('expiry').value != '')
+              {
+
+              
+                  document.getElementById('form1').submit()
+                  
+
+              }     
+              else
+              {
+              alert("Please Select the expiry");
+              return false;
+              }
+
+          }
+          else
+          {
+          alert("Please Select the To cvv");
+          return false;
+          }
+
+      }
+      else
+      {
+      alert("Please Select the from creditcard");
+      return false;
+      }
+}
+
+</script>
+{% endblock%}
+   

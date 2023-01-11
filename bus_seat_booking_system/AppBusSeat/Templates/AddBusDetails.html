@@ -1,0 +1,182 @@
+ {% extends 'base.html'%}
+    {% block content%}
+
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+
+<div style="background: url('/media/img/images/bus.jpg');background-repeat:no-repeat;background-size: cover;color: white;">
+<br>
+<br>
+<br>
+<div class="container" style="background-color: white;width: 50%;" >
+<form class="form-horizontal" action='/AddBusDetails/'  method="POST" id="form1">
+  {% csrf_token %}
+  <center>
+  <div>
+    <h2 style="color: black">Add Bus Details</h2>
+    <hr>
+  </div>
+  </center> 
+
+
+
+
+   <div class="form-row">
+
+
+    <div class="col-md-6 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip01">From</label>
+      <input type="text" class="form-control"  name="From_City" placeholder="From City Name" id="From_City" value="" required>
+      
+    </div>
+    <div class="col-md-6 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip02">To</label>
+      <input type="text" class="form-control"   name="To_City" placeholder="To City Name" id="To_City" value="" required>
+      
+    </div>
+     <div class="col-md-6 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip02">Date</label>
+      <input type="date" class="form-control"   name="Date" placeholder="Date" id="Date" required>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+
+
+
+   <div class="form-row">
+   <br>
+
+    <div class="col-md-6 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip01">Arriving Time</label>
+      <input type="text" class="form-control"  name="Arriving_Time" id="Arriving_Time" placeholder="00.00 PM" value="" required>
+      
+    </div>
+    <div class="col-md-6 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip02">Departure Time</label>
+      <input type="text" class="form-control"   name="Departure_Time" id="Departure_Time" placeholder="00.00 AM"  value="" required>
+      
+    </div>
+
+  </div>
+ 
+
+   <div class="form-row">
+
+    <div class="col-md-6 "style="margin-bottom: 10px">
+      <br>
+      <label style="color: black"  for="validationTooltip01"> Fare </label>
+      <input type="text" class="form-control" placeholder="元"  name="Fare" id="Fare" value="" required>
+      
+    </div>
+    <div class="col-md-6 "style="margin-bottom: 10px">
+      <br>
+      <label style="color: black"  for="validationTooltip02"> Type </label>
+      <select name="bustype" id="bustype"  class="form-control">
+        <option selected value="Choose...">Choose...</option>
+        <option value="AC">AC</option>
+        <option value="NON-AC">NON-AC</option>
+      </select>
+    </div>
+  
+  </div> 
+  <center>
+
+    <div class="col-md-12">
+         <br>
+ <input type="button" onclick="validate();" name="ButtonApply" value="Add &#8250;&#8250;"  id="ButtonApply" class="btn btn-round btn-primary" />
+    <br>  <br>  <br>
+</div>
+</center>
+
+
+  </center>
+  <br>
+</form>
+ <br>
+</div>
+<br>
+<br>
+
+
+</div>
+<br>
+
+
+<script>
+
+
+function  validate()
+{
+   if(document.getElementById('From_City').value != '')
+            {
+                   if(document.getElementById('To_City').value != '')
+                    {
+                           if(document.getElementById('Arriving_Time').value != '')
+                              {
+                                     
+                                      if(document.getElementById('Departure_Time').value != '')
+                                        {
+                                              if(document.getElementById('Fare').value != '')
+                                                  {
+                                                        if(document.getElementById('bustype').value != 'Choose...')
+                                                          {
+                                                                document.getElementById('form1').submit()
+                                                                return true;
+                                                            
+                                                          }     
+                                                          else
+                                                          {
+                                                            alert("Please Select the bustype");
+                                                            return false;
+                                                          }
+                                                    
+                                                  }
+                                                  else
+                                                  {
+                                                    alert("Please Select the Fare");
+                                                    return false;
+                                                  }
+                                          
+                                        }
+                                        else
+                                        {
+                                          alert("Please Select the Departure_Time");
+                                          return false;
+                                        }
+                              }
+                              else
+                              {
+                                alert("Please enter Arriving Time");
+                                return false;
+                              }
+                      
+                    }
+                    else
+                    {
+                      alert("Please enter To City");
+                      return false;
+                    }
+              
+            }
+            else
+            {
+              alert("Please enter From City");
+              return false;
+            }
+}
+
+</script>
+
+
+
+{% endblock%}
+   

@@ -1,0 +1,14 @@
+/venv
+/output
+/.qt_for_python
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
+*.db
+__pycache__
+node_modules

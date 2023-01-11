@@ -1,0 +1,67 @@
+.reviews {
+    width: 75%;
+    margin: 0 auto;
+    border-radius: 5px;
+    background-color: rgba($color-white, .5);
+    box-shadow: 0 3rem 5rem rgba($color-black, .15);
+   padding-left: 9rem;
+    padding: 6rem ;
+    font-size: $default-font-size;
+    transform: skewx(-12deg);
+    
+
+    & > * {
+        transform: skewx(12deg);
+    }
+
+    &__shape {
+        width: 15rem;
+        height: 15rem;
+        float: left;
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        transform: translateX(-3rem) skewx(12deg);
+        position: relative;
+
+    
+       
+      } 
+       
+    &__photo {
+        height: 100%;
+        width: 100%;
+        transform: scale(1.4);
+        transition: all .2s;
+
+       
+            
+        
+    } 
+    &__caption {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, 20%);
+        color: $color-white;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 1.7rem;
+        opacity: 0;
+        transition: all .2s;
+    }
+
+    &:hover &__caption {
+opacity: 1;
+transform: translate(-50%, -50%);
+
+ }
+
+ &:hover &__photo {
+     transform: scale(1);
+     filter: blur(3px) brightness(80%);
+     
+ }
+    
+}

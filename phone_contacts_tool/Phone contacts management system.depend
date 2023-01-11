@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1546685533 source:c:\users\shahorier\desktop\new folder (2)\phone contacts management system\main.c
+	<stdio.h>
+	<conio.h>
+	<string.h>
+	<process.h>
+	<stdlib.h>
+	<dos.h>
+

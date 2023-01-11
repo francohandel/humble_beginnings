@@ -1,0 +1,63 @@
+ {% extends 'base.html'%}
+    {% block content%}
+
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+<div style="background: url('/media/img/images/bus.jpg');background-repeat:no-repeat;background-size: cover; height: 520px">
+
+
+<form id="BookingDetails" method="POST" class="post-form" action="/home/">  
+        {% csrf_token %}  
+<center>
+<div class="container-fluid" style="margin-top: 1%;padding:5%">	
+	<div class="table-responsive">
+	<table class="table table-striped "  style="background-color: white">  
+    <thead style="background-color: black;color: white" class="text-white">  
+    <tr> 
+    	 
+        <th>Id</th>  
+        <th>User Id</th>  
+        <th>Room </th>  
+        <th>Booking Date</th>    
+        <th>room Id</th> 
+        <th>Fare</th>
+        <th>Number of Person</th> 
+        <th>Seat Numbers</th>
+        <th>Total Amount</th>
+    </tr>  
+    </thead>  
+    <tbody>  
+
+
+    
+	{% for or in UsersBookings %}  
+		<tr>  
+	        <td>{{ or.T_id }}</td>  
+	        <td>{{ or.Userid }}</td>  
+	        <td>{{ or.Room_no }}</td>  
+	        <td>{{ or.Bookingdate }}</td>  
+	        <td>{{ or.roomid }}</td> 
+	        <td>{{ or.fare }}</td> 
+	        <td>{{ or.numberOfperson }}</td>
+	        <td>{{ or.Seatnumbers }}</td>
+            <td>{{ or.total }}</td>
+	        
+		</tr> 
+	{% endfor %} 
+
+    </tbody>  
+	</table>
+</div>
+</div>
+</center>
+</form>
+
+</div>
+<br>
+ {% endblock%}

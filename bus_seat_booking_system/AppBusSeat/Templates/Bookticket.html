@@ -1,0 +1,148 @@
+{% extends 'base.html'%}
+    {% block content%}
+
+
+    {% if messages %}
+        {% for message in messages %}
+         {% if message.tags %}  <script>alert("{{ message }}")</script> {% endif %}
+
+        {% endfor %}
+
+    {% endif %}
+
+
+<div style="background: url('/media/img/images/bus.jpg');background-repeat:no-repeat;background-size: cover;color: white; height: 520px">
+<br>
+<br>
+<br>
+<div class="container" style="background-color: white;width: 50%;" >
+<form class="form-horizontal" action='/Bookticket/'  method="POST" id="form1">
+  {% csrf_token %}
+  <center>
+  <div>
+    <h2 style="color: black">Book Ticket</h2>
+    <hr>
+  </div>
+  </center> 
+
+  <div class="form-row">
+
+
+    <div class="col-md-6 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip01">From</label>
+      <select class="form-control" id="fromcity" name="fromcity">
+      <option  value="Select">Select</option>
+      {% for entry in fromcity %}
+        <option value="{{ entry.From_place }}">{{ entry.From_place }}</option>
+      {% endfor %}
+    </select>
+      
+    </div>
+    <div class="col-md-6 "style="margin-bottom: 10px">
+      <label style="color: black"  for="validationTooltip02">To</label>
+      <select class="form-control" id="tocity" name="tocity">
+      <option  value="Select">Select</option>
+      {% for entry in tocity %}
+        <option value="{{ entry.To_place }}">{{ entry.To_place }}</option>
+      {% endfor %}
+    </select>
+      
+    </div>
+  
+  </div>
+
+	<br>	
+  <br>
+  <br>
+  <br>
+  <div class="form-row">
+
+    <div class="col-md-6" style="margin-bottom: 10px">
+      <label style="color: black" for="validationTooltip03">Date </label>
+      <input type="date" class="form-control"   name="Date" id="Date" placeholder="Date" required>
+      
+    </div>
+
+  </div> 
+
+  
+
+  <div class="form-row">
+
+    <div class="col-md-12" style="margin-bottom: 10px">
+    	<br>
+    	<center>
+         <input type="button" onclick="check();" name="ButtonApply" value="Search &#8250;&#8250;"  id="ButtonApply" class="btn btn-round btn-primary" />
+     
+      <br><br>
+      </center>
+    </div>
+<br>
+  </div> 
+
+</form>
+ <br>
+</div>
+<br>
+<br>
+
+
+</div>
+<br> 
+
+
+
+<script type="text/javascript">
+  
+function check() {
+
+      if(document.getElementById('fromcity').value != 'Select')
+      {
+          if(document.getElementById('tocity').value != 'Select')
+          {
+              if(document.getElementById('Date').value != '')
+              {
+
+              var today = new Date().toISOString().slice(0, 10)
+              var date = document.getElementById('Date').value
+
+
+              var d1 = new Date(today);
+              var d2 = new Date(date);
+
+                  if(d2 > d1)
+                  {
+                  document.getElementById('form1').submit()
+                  return true;
+                  }
+                  else
+                  {
+                    alert("Please Select the Appriopriate Date");
+                    return false;
+                  }
+
+              }     
+              else
+              {
+              alert("Please Select the Date");
+              return false;
+              }
+
+          }
+          else
+          {
+          alert("Please Select the To City");
+          return false;
+          }
+
+      }
+      else
+      {
+      alert("Please Select the from City");
+      return false;
+      }
+}
+</script>
+
+
+    {% endblock%}
