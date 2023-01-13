@@ -33,6 +33,6 @@ This is repository containing few of the numerous fun projects i did after i rea
 - for Projects written in django use "python manage.py runserver"
 - for projects written in python use run them as you would run a python script
 - for Natours project run the index.html file with live server
-- for projects written in C you can compile and build intoa .Exe file
+- for projects written in C you can compile and build into a .Exe file
 # Note
 For projects requiring databases make sure you have a working database connection before running the projects 
