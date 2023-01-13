@@ -43,7 +43,7 @@ stu
     Use: All functions at Voter’s end
 
 ##### Admin Panel 
-##### Username: "Admin" Password: "SR@3111"
+##### Username: "Admin" Password: "Password"
 
 Recommended Compiler: Turbo C++
 
