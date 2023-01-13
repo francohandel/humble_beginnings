@@ -1,6 +1,6 @@
 # humble_beginnings
 
-This is repository containing few of the numerous fun projects i did after i realized how passionate i was about software engineering(2019-2020).
+This is repository containing few of the numerous fun projects i did after i realized how passionate i was about software engineering(2019-2021).
 
 ## Projects
 
